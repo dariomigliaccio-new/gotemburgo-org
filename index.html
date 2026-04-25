@@ -3,177 +3,267 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Inauguração AD Gotemburgo — 25 de Abril de 2026</title>
-
-  <!-- SEO & Compartilhamento -->
-  <meta name="description" content="116 anos depois, a Assembleia de Deus retorna a Gotemburgo — a cidade de onde tudo começou. Culto de Inauguração ao vivo, 25 de Abril de 2026." />
-  <meta property="og:title" content="O Círculo se Fecha — AD Gotemburgo" />
-  <meta property="og:description" content="Em 1910, Gunnar Vingren e Daniel Berg partiram de Gotemburgo e fundaram a Assembleia de Deus no Brasil. 116 anos depois, a igreja retorna à cidade de origem." />
-  <meta property="og:image" content="https://raw.githubusercontent.com/placeholder/og-image.jpg" />
+  <title>Culto de Inauguração — AD Gotemburgo</title>
+  <meta name="description" content="Inauguração da primeira congregação da AD-Belém em Gotemburgo, Suécia. 25 de Abril de 2026." />
+  <meta property="og:title" content="Culto de Inauguração — AD Gotemburgo" />
+  <meta property="og:description" content="Os suecos plantaram a semente no Brasil. Hoje, colhem seus frutos. 25 de Abril de 2026 — Ao vivo." />
   <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --gold: #c9a84c;
-      --gold-light: #e8c97a;
-      --navy: #0b1220;
-      --navy-mid: #121d33;
-      --white: #ffffff;
-      --gray: #8a9ab5;
+      --dark: #12182b;
+      --cream: #f5f0e8;
+      --text: #2a2a2a;
+      --gray: #888;
     }
 
-    html { scroll-behavior: smooth; }
-
     body {
-      background-color: var(--navy);
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
-      line-height: 1.7;
-      overflow-x: hidden;
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
     }
 
     /* ── HERO ── */
     .hero {
       position: relative;
-      min-height: 100vh;
+      min-height: 520px;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem 1.5rem;
       overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
+    .hero-bg {
       position: absolute;
       inset: 0;
-      background: url('fundadores.png') center center / cover no-repeat;
-      filter: brightness(0.18) saturate(0.3);
+      background: url('gotemburgo_1916.jpg') center center / cover no-repeat;
+      filter: sepia(60%) brightness(0.45) contrast(1.1);
       z-index: 0;
     }
 
-    .hero::after {
+    .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at center, transparent 0%, var(--navy) 80%);
-      z-index: 1;
+      background: linear-gradient(to right, rgba(10,16,30,0.75) 0%, rgba(10,16,30,0.3) 60%, rgba(10,16,30,0.55) 100%);
     }
 
-    .hero-content {
-      position: relative;
+    /* Bandeira Suécia — canto superior esquerdo */
+    .hero-flag {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: clamp(120px, 20vw, 220px);
       z-index: 2;
-      max-width: 820px;
+      opacity: 0.92;
+    }
+
+    .hero-flag svg {
+      width: 100%;
+      display: block;
+      border-bottom-right-radius: 6px;
+    }
+
+    /* Grid interno */
+    .hero-grid {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2.5rem 3.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    /* Texto esquerdo */
+    .hero-txt {
+      color: white;
     }
 
     .hero-eyebrow {
       display: inline-block;
-      font-size: 0.72rem;
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.55rem, 1.2vw, 0.68rem);
       font-weight: 600;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--gold);
-      border: 1px solid var(--gold);
-      padding: 0.4rem 1.2rem;
+      color: #f5d88a;
+      border: 1px solid rgba(245,216,138,0.65);
+      padding: 0.35rem 1.1rem;
       border-radius: 999px;
-      margin-bottom: 2rem;
-    }
-
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 7vw, 5rem);
-      font-weight: 900;
-      line-height: 1.1;
-      color: var(--white);
       margin-bottom: 1.2rem;
     }
 
-    .hero-title span {
-      color: var(--gold);
+    .hero-titulo {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5.5vw, 4rem);
+      font-weight: 700;
+      color: white;
+      line-height: 1.1;
+      letter-spacing: 0.03em;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.7);
     }
 
-    .hero-subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      color: #c8d4e8;
-      max-width: 620px;
-      margin: 0 auto 2.5rem;
+    .hero-titulo span { color: #f5d88a; }
+
+    .hero-subtitulo {
+      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+      color: rgba(255,255,255,0.82);
+      font-style: italic;
+      margin-bottom: 1.8rem;
+      line-height: 1.65;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.7);
     }
 
-    .hero-date-badge {
+    .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
       background: var(--gold);
-      color: var(--navy);
+      color: #12182b;
+      font-family: 'Cinzel', serif;
       font-weight: 700;
-      font-size: 1rem;
-      padding: 0.8rem 2rem;
+      font-size: clamp(0.68rem, 1.4vw, 0.85rem);
+      padding: 0.6rem 1.6rem;
       border-radius: 999px;
-      letter-spacing: 0.04em;
-      margin-bottom: 3rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.8rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
     }
 
-    .hero-scroll {
-      color: var(--gray);
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
+    .hero-org {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.5rem, 1.1vw, 0.65rem);
+      letter-spacing: 0.18em;
+      color: rgba(245,216,138,0.7);
       text-transform: uppercase;
-      animation: bounce 2s infinite;
     }
 
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(6px); }
+    /* Pastor círculo */
+    .hero-pastor {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      flex-shrink: 0;
     }
 
-    /* ── SECTION BASE ── */
-    section {
-      padding: 5rem 1.5rem;
+    .pastor-circulo {
+      width: clamp(160px, 22vw, 280px);
+      height: clamp(160px, 22vw, 280px);
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid var(--gold);
+      box-shadow: 0 0 0 6px rgba(201,168,76,0.25), 0 8px 32px rgba(0,0,0,0.5);
+      flex-shrink: 0;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
+    .pastor-circulo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
     }
 
-    .section-label {
-      font-size: 0.7rem;
-      font-weight: 600;
+    .pastor-circulo-nome {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.6rem, 1.2vw, 0.72rem);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #f5d88a;
+      text-align: center;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.9);
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 5rem 1.5rem 3rem;
+        gap: 2rem;
+      }
+
+      .hero-pastor {
+        order: -1;
+      }
+
+      .pastor-circulo {
+        width: 160px;
+        height: 160px;
+      }
+
+      .hero-flag {
+        width: 100px;
+      }
+    }
+
+    /* ── DATA STRIP ── */
+    .data-strip {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 1.4rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem 3rem;
+    }
+
+    .strip-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+    }
+
+    .strip-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 1rem;
     }
 
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
+    .strip-value {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      letter-spacing: 0.05em;
     }
 
-    .divider {
-      width: 60px;
-      height: 2px;
-      background: var(--gold);
-      margin: 1.5rem 0;
+    .strip-divider {
+      width: 1px;
+      height: 36px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* ── CONTAINER ── */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
 
     /* ── HISTORIA ── */
     .historia {
-      background: var(--navy-mid);
+      padding: 5rem 1.5rem;
+      background: var(--cream);
     }
 
     .historia-grid {
@@ -181,667 +271,528 @@
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
       align-items: center;
+      max-width: 860px;
+      margin: 0 auto;
     }
 
-    .historia-img {
-      position: relative;
+    .historia-foto {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: 4px 4px 24px rgba(0,0,0,0.12);
     }
 
-    .historia-img img {
+    .historia-foto img {
       width: 100%;
-      border-radius: 12px;
-      filter: sepia(30%) brightness(0.9);
-      border: 1px solid rgba(201, 168, 76, 0.3);
+      display: block;
+      filter: sepia(20%) contrast(1.05);
     }
 
-    .historia-img::before {
-      content: '1910';
-      position: absolute;
-      bottom: -1rem;
-      right: -1rem;
-      font-family: 'Playfair Display', serif;
-      font-size: 5rem;
-      font-weight: 900;
-      color: var(--gold);
-      opacity: 0.12;
-      line-height: 1;
-      z-index: -1;
-    }
-
-    .historia-names {
+    .historia-nomes {
       display: flex;
       gap: 2rem;
-      margin-top: 1.2rem;
+      margin-top: 1rem;
     }
 
-    .historia-name {
-      text-align: center;
-    }
-
-    .historia-name strong {
+    .historia-nome strong {
       display: block;
-      color: var(--gold);
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    .historia-name span {
+      font-family: 'Cinzel', serif;
       font-size: 0.75rem;
-      color: var(--gray);
+      letter-spacing: 0.08em;
+      color: var(--dark);
     }
 
-    .historia-text p {
-      color: #b0c0d8;
-      margin-bottom: 1.2rem;
+    .historia-nome span {
+      font-size: 0.78rem;
+      color: var(--gray);
+      font-style: italic;
+    }
+
+    .tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .historia-texto h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .linha-ouro {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .historia-texto p {
+      color: #444;
+      margin-bottom: 1rem;
       font-size: 1.05rem;
     }
 
-    .historia-text p strong {
-      color: var(--white);
+    .historia-texto p strong {
+      color: var(--dark);
     }
 
-    .stat-row {
+    .stats {
       display: flex;
-      gap: 2rem;
+      gap: 1.5rem;
       margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0,0,0,0.1);
     }
 
-    .stat {
-      border-left: 2px solid var(--gold);
-      padding-left: 1rem;
-    }
-
-    .stat-number {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      font-weight: 900;
+    .stat-num {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
       color: var(--gold);
       line-height: 1;
     }
 
-    .stat-label {
-      font-size: 0.75rem;
+    .stat-txt {
+      font-size: 0.72rem;
       color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
       margin-top: 0.2rem;
     }
 
     /* ── EVENTO ── */
     .evento {
+      background: var(--dark);
+      color: white;
+      padding: 5rem 1.5rem;
       text-align: center;
+    }
+
+    .evento h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .evento-sub {
+      color: rgba(255,255,255,0.5);
+      font-style: italic;
+      margin-bottom: 3rem;
+      font-size: 1rem;
     }
 
     .evento-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.5rem;
-      margin-top: 3rem;
+      max-width: 860px;
+      margin: 0 auto 3rem;
     }
 
     .evento-card {
-      background: var(--navy-mid);
-      border: 1px solid rgba(201, 168, 76, 0.2);
-      border-radius: 16px;
-      padding: 2rem 1.5rem;
-      transition: border-color 0.3s;
-    }
-
-    .evento-card:hover {
-      border-color: var(--gold);
-    }
-
-    .evento-card-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 10px;
+      padding: 1.8rem 1.2rem;
     }
 
     .evento-card-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
     }
 
-    .evento-card-value {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.3;
+    .evento-card-valor {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: white;
+      line-height: 1.4;
     }
 
     .evento-card-sub {
-      font-size: 0.8rem;
-      color: var(--gray);
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
       margin-top: 0.4rem;
     }
 
-    .timezone-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1rem;
-      margin-top: 3rem;
+    /* Fusos */
+    .fusos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 2rem;
+      max-width: 700px;
+      margin: 0 auto;
       padding: 2rem;
-      background: var(--navy-mid);
-      border-radius: 16px;
-      border: 1px solid rgba(201, 168, 76, 0.15);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 10px;
     }
 
-    .tz-item {
+    .fuso {
       text-align: center;
+      padding: 0.5rem 1rem;
     }
 
-    .tz-city {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
+    .fuso-pais {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 0.3rem;
-    }
-
-    .tz-time {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--gold);
-    }
-
-    .tz-flag {
-      font-size: 1.2rem;
+      color: rgba(255,255,255,0.4);
       margin-bottom: 0.2rem;
     }
 
-    /* ── PASTOR ── */
-    .pastor {
-      background: var(--navy-mid);
-    }
-
-    .pastor-grid {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .pastor-photo-wrap {
-      position: relative;
-    }
-
-    .pastor-photo-wrap::before {
-      content: '';
-      position: absolute;
-      inset: -8px;
-      border: 2px solid var(--gold);
-      border-radius: 16px;
-      opacity: 0.4;
-    }
-
-    .pastor-photo-wrap img {
-      width: 100%;
-      border-radius: 12px;
-      display: block;
-    }
-
-    .pastor-badge {
-      position: absolute;
-      bottom: -1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--gold);
-      color: var(--navy);
-      font-size: 0.7rem;
+    .fuso-hora {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.4rem 1.2rem;
-      border-radius: 999px;
-      white-space: nowrap;
-    }
-
-    .pastor-text .section-title {
-      margin-top: 0;
-    }
-
-    .pastor-text p {
-      color: #b0c0d8;
-      font-size: 1.05rem;
-      margin-bottom: 1rem;
-    }
-
-    .pastor-text p strong {
-      color: var(--white);
+      color: var(--gold);
     }
 
     /* ── AO VIVO ── */
     .aovivo {
+      background: var(--cream);
+      padding: 5rem 1.5rem;
       text-align: center;
     }
 
+    .aovivo h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .aovivo-sub {
+      color: var(--gray);
+      font-style: italic;
+      margin-bottom: 3rem;
+    }
+
     .aovivo-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
     .aovivo-card {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 1rem;
-      background: var(--navy-mid);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 2.5rem 1.5rem;
+      gap: 0.8rem;
+      padding: 1rem 1.8rem;
+      border-radius: 8px;
       text-decoration: none;
-      color: var(--white);
-      transition: all 0.3s;
-    }
-
-    .aovivo-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--gold);
-    }
-
-    .aovivo-card-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-    }
-
-    .aovivo-card-icon.yt { background: #ff0000; }
-    .aovivo-card-icon.fb { background: #1877f2; }
-    .aovivo-card-icon.web { background: var(--gold); color: var(--navy); }
-
-    .aovivo-card-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
       font-weight: 600;
-      font-size: 1rem;
+      letter-spacing: 0.08em;
+      transition: opacity 0.2s, transform 0.2s;
+      color: white;
     }
 
-    .aovivo-card-url {
-      font-size: 0.78rem;
-      color: var(--gray);
+    .aovivo-card:hover { opacity: 0.88; transform: translateY(-2px); }
+    .aovivo-card.yt { background: #cc0000; }
+    .aovivo-card.fb { background: #1877f2; }
+    .aovivo-card.web { background: var(--dark); border: 1px solid var(--gold); }
+
+    .aovivo-icon {
+      font-size: 1.2rem;
+      line-height: 1;
     }
 
     /* ── COMPARTILHE ── */
     .compartilhe {
-      background: linear-gradient(135deg, #0f1a2e 0%, #1a2a45 100%);
+      background: var(--dark);
+      padding: 4rem 1.5rem;
       text-align: center;
-      border-top: 1px solid rgba(201, 168, 76, 0.2);
-      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .compartilhe h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: white;
+      margin-bottom: 0.5rem;
     }
 
     .compartilhe p {
-      color: #b0c0d8;
-      font-size: 1.1rem;
-      max-width: 560px;
-      margin: 0 auto 2.5rem;
+      color: rgba(255,255,255,0.5);
+      font-style: italic;
+      margin-bottom: 2rem;
     }
 
-    .share-buttons {
+    .share-btns {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
       justify-content: center;
+      gap: 1rem;
     }
 
     .btn-share {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
-      padding: 0.9rem 1.8rem;
-      border-radius: 999px;
-      font-size: 0.95rem;
+      gap: 0.5rem;
+      padding: 0.8rem 1.8rem;
+      border-radius: 6px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
       font-weight: 600;
+      letter-spacing: 0.1em;
       text-decoration: none;
-      transition: all 0.2s;
       cursor: pointer;
       border: none;
+      transition: opacity 0.2s;
     }
 
-    .btn-share.whatsapp {
-      background: #25d366;
-      color: white;
-    }
-
-    .btn-share.facebook {
-      background: #1877f2;
-      color: white;
-    }
-
-    .btn-share.copy {
-      background: transparent;
-      color: var(--gold);
-      border: 1px solid var(--gold);
-    }
-
-    .btn-share:hover {
-      transform: scale(1.04);
-      opacity: 0.92;
-    }
+    .btn-share:hover { opacity: 0.85; }
+    .btn-share.wa { background: #25d366; color: white; }
+    .btn-share.fb { background: #1877f2; color: white; }
+    .btn-share.cp { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
 
     /* ── FOOTER ── */
     footer {
-      padding: 3rem 1.5rem;
+      background: #0a0f1a;
+      color: rgba(255,255,255,0.3);
       text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 2rem 1.5rem;
+      font-size: 0.82rem;
     }
 
-    .footer-social {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-social a {
-      color: var(--gray);
+    footer a {
+      color: rgba(255,255,255,0.4);
       text-decoration: none;
-      font-size: 0.85rem;
-      transition: color 0.2s;
+      margin: 0 0.6rem;
     }
 
-    .footer-social a:hover {
-      color: var(--gold);
-    }
+    footer a:hover { color: var(--gold); }
 
-    .footer-copy {
-      font-size: 0.78rem;
-      color: #4a5568;
-    }
+    .footer-links { margin-bottom: 0.8rem; }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .historia-grid,
-      .pastor-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-
-      .pastor-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .pastor-photo-wrap {
-        max-width: 280px;
-        margin: 0 auto;
-      }
-
-      .stat-row {
-        gap: 1.2rem;
-      }
-
-      .historia-names {
-        justify-content: center;
-      }
+    @media (max-width: 680px) {
+      .historia-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .strip-divider { display: none; }
+      .fusos { gap: 0.5rem 1rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── HERO ── -->
+  <!-- HERO -->
   <section class="hero">
-    <div class="hero-content">
-      <span class="hero-eyebrow">25 de Abril de 2026 &nbsp;·&nbsp; Gotemburgo, Suécia</span>
+    <div class="hero-bg"></div>
 
-      <h1 class="hero-title">
-        O Círculo<br />
-        <span>se Fecha</span>
-      </h1>
 
-      <p class="hero-subtitle">
-        Em 1910, dois homens partiram desta cidade com uma chama no coração.<br />
-        116 anos depois, a Assembleia de Deus retorna a Gotemburgo.
-      </p>
-
-      <div class="hero-date-badge">
-        &#9679;&nbsp; Ao Vivo &nbsp;·&nbsp; 25 Abr 2026 &nbsp;·&nbsp; 5h00 (Flórida)
+<div class="hero-grid">
+      <!-- Texto -->
+      <div class="hero-txt">
+        <span class="hero-eyebrow">&#127468;&#127463;&nbsp; Gotemburgo, Suécia &nbsp;·&nbsp; 25 de Abril de 2026</span>
+        <h1 class="hero-titulo">Culto de<br/><span>Inauguração</span></h1>
+        <p class="hero-subtitulo">Os suecos plantaram a semente no Brasil.<br/>Hoje, colhem seus frutos.</p>
+        <div class="hero-badge">&#9679;&nbsp; Ao Vivo &nbsp;·&nbsp; 25 Abr 2026 &nbsp;·&nbsp; 5h00 (Flórida)</div>
+        <span class="hero-org">Bethlehem Ministry of the Assemblies of God</span>
       </div>
 
-      <div class="hero-scroll">&#8595;&nbsp; Descubra a história</div>
+      <!-- Pastor em círculo -->
+      <div class="hero-pastor">
+        <div class="pastor-circulo">
+          <img src="pastor.jpg" alt="Pastor José Wellington Bezerra da Costa" />
+        </div>
+        <span class="pastor-circulo-nome">Pr. José Wellington<br/>Bezerra da Costa</span>
+      </div>
     </div>
   </section>
 
-  <!-- ── HISTÓRIA ── -->
+  <!-- DATA STRIP -->
+  <div class="data-strip">
+    <div class="strip-item">
+      <span class="strip-label">Data</span>
+      <span class="strip-value">25 de Abril de 2026</span>
+    </div>
+    <div class="strip-divider"></div>
+    <div class="strip-item">
+      <span class="strip-label">Horário Flórida</span>
+      <span class="strip-value">5h00 AM</span>
+    </div>
+    <div class="strip-divider"></div>
+    <div class="strip-item">
+      <span class="strip-label">Local</span>
+      <span class="strip-value">Gotemburgo, Suécia</span>
+    </div>
+    <div class="strip-divider"></div>
+    <div class="strip-item">
+      <span class="strip-label">Transmissão</span>
+      <span class="strip-value">Ao Vivo</span>
+    </div>
+  </div>
+
+  <!-- HISTORIA -->
   <section class="historia">
-    <div class="container">
-      <div class="historia-grid">
-        <div class="historia-img">
-          <img src="fundadores.png" alt="Gunnar Vingren e Daniel Berg, fundadores da Assembleia de Deus no Brasil" />
-          <div class="historia-names">
-            <div class="historia-name">
-              <strong>Gunnar Vingren</strong>
-              <span>Gotemburgo, 1879</span>
-            </div>
-            <div class="historia-name">
-              <strong>Daniel Berg</strong>
-              <span>Suécia, 1884</span>
-            </div>
+    <div class="historia-grid">
+      <div>
+        <div class="historia-foto">
+          <img src="fundadores.png" alt="Gunnar Vingren e Daniel Berg" />
+        </div>
+        <div class="historia-nomes">
+          <div class="historia-nome">
+            <strong>Gunnar Vingren</strong>
+            <span>Gotemburgo, 1879</span>
+          </div>
+          <div class="historia-nome">
+            <strong>Daniel Berg</strong>
+            <span>Suécia, 1884</span>
           </div>
         </div>
+      </div>
 
-        <div class="historia-text">
-          <p class="section-label">A origem</p>
-          <h2 class="section-title">Tudo começou aqui.</h2>
-          <div class="divider"></div>
-
-          <p>
-            Em <strong>novembro de 1910</strong>, Gunnar Vingren e Daniel Berg embarcaram de Gotemburgo rumo ao Brasil,
-            levados por uma visão profética. Chegaram a Belém do Pará sem recursos — apenas com fé.
-          </p>
-          <p>
-            O que nasceu naquele porão de igreja tornou-se o maior movimento pentecostal da América Latina.
-            A <strong>Assembleia de Deus no Brasil</strong> hoje reúne mais de <strong>30 milhões de membros</strong>
-            em todo o país e ao redor do mundo.
-          </p>
-          <p>
-            Agora, pela primeira vez, <strong>a chama retorna à cidade de origem.</strong>
-          </p>
-
-          <div class="stat-row">
-            <div class="stat">
-              <div class="stat-number">116</div>
-              <div class="stat-label">anos de história</div>
-            </div>
-            <div class="stat">
-              <div class="stat-number">30M+</div>
-              <div class="stat-label">membros no Brasil</div>
-            </div>
-            <div class="stat">
-              <div class="stat-number">1910</div>
-              <div class="stat-label">partida de Gotemburgo</div>
-            </div>
+      <div class="historia-texto">
+        <span class="tag">A Origem</span>
+        <h2>A história que<br/>se inverte.</h2>
+        <div class="linha-ouro"></div>
+        <p>No início do século XX, os missionários suecos <strong>Daniel Berg e Gunnar Vingren</strong> deixaram a Suécia e, após passarem um período nos Estados Unidos, na cidade de Chicago, seguiram para o Brasil.</p>
+        <p>Em <strong>1910</strong>, chegaram a Belém do Pará, onde fundaram a <strong>Assembleia de Deus no Brasil</strong>. A obra cresceu de forma extraordinária e levantou missionários que levaram o Evangelho a diversas nações.</p>
+        <p>Hoje, <strong>25 de abril de 2026</strong>, há exatos 116 anos, inaugura-se a primeira congregação da <strong>AD-Belém em Gotemburgo</strong>. Os suecos plantaram a semente no Brasil — hoje, colhem seus frutos.</p>
+        <div class="stats">
+          <div>
+            <div class="stat-num">116</div>
+            <div class="stat-txt">Anos de história</div>
+          </div>
+          <div>
+            <div class="stat-num">30M+</div>
+            <div class="stat-txt">Membros no Brasil</div>
+          </div>
+          <div>
+            <div class="stat-num">1910</div>
+            <div class="stat-txt">Chegada ao Brasil</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── EVENTO ── -->
+  <!-- EVENTO -->
   <section class="evento">
     <div class="container">
-      <p class="section-label">O evento</p>
-      <h2 class="section-title">Culto de Inauguração<br />Igreja AD Gotemburgo</h2>
-      <div class="divider" style="margin: 1.5rem auto;"></div>
+      <span class="tag">O Evento</span>
+      <h2>Culto de Inauguração</h2>
+      <p class="evento-sub">Igreja Assembleia de Deus em Gotemburgo</p>
 
       <div class="evento-cards">
         <div class="evento-card">
-          <div class="evento-card-icon">&#128197;</div>
           <div class="evento-card-label">Data</div>
-          <div class="evento-card-value">25 de Abril<br/>de 2026</div>
+          <div class="evento-card-valor">25 de Abril de 2026</div>
           <div class="evento-card-sub">Sábado</div>
         </div>
-
         <div class="evento-card">
-          <div class="evento-card-icon">&#128205;</div>
           <div class="evento-card-label">Local</div>
-          <div class="evento-card-value">Sala Shiloh<br/>Smyrna Frihamnskyrkan</div>
-          <div class="evento-card-sub">Frihamnen 14, 417 70 Göteborg — Suécia<br/>1º Andar</div>
+          <div class="evento-card-valor">Sala Shiloh<br/>Smyrna Frihamnskyrkan</div>
+          <div class="evento-card-sub">Frihamnen 14, Göteborg — 1º Andar</div>
         </div>
-
         <div class="evento-card">
-          <div class="evento-card-icon">&#127881;</div>
           <div class="evento-card-label">Formato</div>
-          <div class="evento-card-value">Culto de<br/>Inauguração</div>
-          <div class="evento-card-sub">Presencial + Transmissão ao vivo</div>
+          <div class="evento-card-valor">Culto de Inauguração</div>
+          <div class="evento-card-sub">Presencial + Ao vivo</div>
         </div>
       </div>
 
-      <!-- Fusos Horários -->
-      <div class="timezone-grid">
-        <div class="tz-item">
-          <div class="tz-flag">&#127468;&#127463;</div>
-          <div class="tz-city">Gotemburgo</div>
-          <div class="tz-time">11h00</div>
+      <div class="fusos">
+        <div class="fuso">
+          <div class="fuso-pais">🇸🇪 Gotemburgo</div>
+          <div class="fuso-hora">11h00</div>
         </div>
-        <div class="tz-item">
-          <div class="tz-flag">&#127463;&#127479;</div>
-          <div class="tz-city">Brasil (Brasília)</div>
-          <div class="tz-time">06h00</div>
+        <div class="fuso">
+          <div class="fuso-pais">🇧🇷 Brasil</div>
+          <div class="fuso-hora">06h00</div>
         </div>
-        <div class="tz-item">
-          <div class="tz-flag">&#127482;&#127480;</div>
-          <div class="tz-city">Flórida (EDT)</div>
-          <div class="tz-time">05h00</div>
+        <div class="fuso">
+          <div class="fuso-pais">🇺🇸 Flórida</div>
+          <div class="fuso-hora">05h00</div>
         </div>
-        <div class="tz-item">
-          <div class="tz-flag">&#127477;&#127481;</div>
-          <div class="tz-city">Portugal</div>
-          <div class="tz-time">10h00</div>
-        </div>
-        <div class="tz-item">
-          <div class="tz-flag">&#127468;&#127463;</div>
-          <div class="tz-city">Londres</div>
-          <div class="tz-time">09h00</div>
+        <div class="fuso">
+          <div class="fuso-pais">🇵🇹 Portugal</div>
+          <div class="fuso-hora">10h00</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── PASTOR ── -->
-  <section class="pastor">
-    <div class="container">
-      <div class="pastor-grid">
-        <div class="pastor-photo-wrap">
-          <img src="pastor.jpg" alt="Pastor José Wellington Bezerra da Costa" />
-          <span class="pastor-badge">Presença Especial</span>
-        </div>
-
-        <div class="pastor-text">
-          <p class="section-label">Liderança</p>
-          <h2 class="section-title">Pastor José Wellington<br />Bezerra da Costa</h2>
-          <div class="divider"></div>
-
-          <p>
-            Presidente Nacional da <strong>Assembleia de Deus no Brasil</strong> e uma das maiores
-            referências do movimento pentecostal no mundo, o Pastor José Wellington estará presente
-            neste momento histórico.
-          </p>
-          <p>
-            Sua presença marca o reconhecimento oficial da <strong>Igreja Assembleia de Deus em Gotemburgo</strong>
-            como parte viva do legado que Vingren e Berg plantaram 116 anos atrás, nesta mesma cidade.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── AO VIVO ── -->
+  <!-- AO VIVO -->
   <section class="aovivo">
     <div class="container">
-      <p class="section-label">Transmissão</p>
-      <h2 class="section-title">Assista ao Vivo</h2>
-      <div class="divider" style="margin: 1.5rem auto;"></div>
-      <p style="color: #b0c0d8; max-width: 520px; margin: 0 auto;">
-        Acompanhe a inauguração de qualquer lugar do mundo, diretamente pelos canais oficiais da ADbelem.
-      </p>
-
+      <span class="tag">Transmissão</span>
+      <h2>Assista Ao Vivo</h2>
+      <p class="aovivo-sub">Acompanhe de qualquer lugar do mundo</p>
       <div class="aovivo-cards">
-        <a href="https://www.youtube.com/c/ADBELEMUSA/about" target="_blank" rel="noopener" class="aovivo-card">
-          <div class="aovivo-card-icon yt">&#9654;</div>
-          <div class="aovivo-card-name">YouTube</div>
-          <div class="aovivo-card-url">youtube.com/ADBELEMUSA</div>
+        <a href="https://www.youtube.com/c/ADBELEMUSA/about" target="_blank" rel="noopener" class="aovivo-card yt">
+          <span class="aovivo-icon">▶</span> YouTube
         </a>
-
-        <a href="https://www.facebook.com/adbelem" target="_blank" rel="noopener" class="aovivo-card">
-          <div class="aovivo-card-icon fb">f</div>
-          <div class="aovivo-card-name">Facebook</div>
-          <div class="aovivo-card-url">facebook.com/adbelem</div>
+        <a href="https://www.facebook.com/adbelem" target="_blank" rel="noopener" class="aovivo-card fb">
+          <span class="aovivo-icon">f</span> Facebook
         </a>
-
-        <a href="https://www.adbelem.org" target="_blank" rel="noopener" class="aovivo-card">
-          <div class="aovivo-card-icon web">&#127760;</div>
-          <div class="aovivo-card-name">ADbelem.org</div>
-          <div class="aovivo-card-url">adbelem.org</div>
+        <a href="https://www.adbelem.org" target="_blank" rel="noopener" class="aovivo-card web">
+          <span class="aovivo-icon">🌐</span> ADbelem.org
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ── COMPARTILHE ── -->
+  <!-- COMPARTILHE -->
   <section class="compartilhe">
     <div class="container">
-      <p class="section-label">Espalhe</p>
-      <h2 class="section-title">Compartilhe este momento</h2>
-      <p>
-        Esse é um marco na história da Assembleia de Deus. Ajude a espalhar essa notícia
-        para todos os irmãos ao redor do mundo.
-      </p>
-
-      <div class="share-buttons">
-        <a
-          href="https://wa.me/?text=O%20C%C3%ADrculo%20se%20Fecha%20%E2%80%94%20A%20Assembleia%20de%20Deus%20inaugura%20sua%20primeira%20igreja%20em%20Gotemburgo%2C%20cidade%20de%20onde%20Vingren%20e%20Daniel%20Berg%20partiram%20em%201910.%20Acompanhe%20ao%20vivo%20dia%2025%20de%20Abril%20%C3%A0s%2005h00%20(FL)%20%7C%20www.adbelem.org"
-          target="_blank"
-          rel="noopener"
-          class="btn-share whatsapp"
-        >
-          &#128172;&nbsp; WhatsApp
+      <h2>Compartilhe</h2>
+      <p>Ajude a espalhar este momento histórico</p>
+      <div class="share-btns">
+        <a class="btn-share wa"
+          href="https://wa.me/?text=*Culto%20de%20Inaugura%C3%A7%C3%A3o%20-%20AD%20Gotemburgo*%20%F0%9F%87%B8%F0%9F%87%AA%0A%0AEm%201910%2C%20os%20suecos%20Daniel%20Berg%20e%20Gunnar%20Vingren%20plantaram%20a%20semente%20no%20Brasil.%20Hoje%2C%2025%20de%20abril%20de%202026%2C%20a%20hist%C3%B3ria%20se%20inverte%20%E2%80%94%20a%20AD-Bel%C3%A9m%20inaugura%20sua%20primeira%20congrega%C3%A7%C3%A3o%20em%20Gotemburgo.%0A%0A%E2%8F%B0%205h00%20(FL)%20%7C%206h00%20(Brasil)%0A%F0%9F%8C%90%20gotemburgo.org"
+          target="_blank" rel="noopener">
+          💬 WhatsApp
         </a>
-
-        <a
-          href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.adbelem.org"
-          target="_blank"
-          rel="noopener"
-          class="btn-share facebook"
-        >
-          f&nbsp; Facebook
+        <a class="btn-share fb"
+          href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgotemburgo.org"
+          target="_blank" rel="noopener">
+          f Facebook
         </a>
-
-        <button class="btn-share copy" onclick="copyLink()">
-          &#128279;&nbsp; Copiar link
-        </button>
+        <button class="btn-share cp" onclick="copiarLink()">🔗 Copiar Link</button>
       </div>
     </div>
   </section>
 
-  <!-- ── FOOTER ── -->
+  <!-- FOOTER -->
   <footer>
-    <div class="footer-social">
-      <a href="https://www.instagram.com/adbelemusa/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.facebook.com/adbelem" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://www.youtube.com/c/ADBELEMUSA/about" target="_blank" rel="noopener">YouTube</a>
-      <a href="https://www.adbelem.org" target="_blank" rel="noopener">ADbelem.org</a>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/adbelemusa/" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/adbelem" target="_blank">Facebook</a>
+      <a href="https://www.youtube.com/c/ADBELEMUSA/about" target="_blank">YouTube</a>
+      <a href="https://www.adbelem.org" target="_blank">ADbelem.org</a>
     </div>
-    <p class="footer-copy">
-      Igreja Assembleia de Deus em Gotemburgo &nbsp;·&nbsp; Frihamnen 14, Göteborg, Suécia<br />
-      Em honra a Gunnar Vingren e Daniel Berg — 1910–2026
-    </p>
+    <p>Igreja Assembleia de Deus em Gotemburgo &nbsp;·&nbsp; Frihamnen 14, Göteborg, Suécia</p>
+    <p style="margin-top:0.4rem">Em honra a Gunnar Vingren e Daniel Berg — 1910 · 2026</p>
   </footer>
 
   <script>
-    function copyLink() {
-      const url = window.location.href;
-      navigator.clipboard.writeText(url).then(() => {
-        const btn = document.querySelector('.btn-share.copy');
-        const original = btn.innerHTML;
-        btn.innerHTML = '&#10003;&nbsp; Copiado!';
-        setTimeout(() => { btn.innerHTML = original; }, 2000);
+    function copiarLink() {
+      navigator.clipboard.writeText('https://gotemburgo.org').then(() => {
+        const btn = document.querySelector('.btn-share.cp');
+        const orig = btn.innerHTML;
+        btn.innerHTML = '✓ Copiado!';
+        setTimeout(() => btn.innerHTML = orig, 2000);
       });
     }
   </script>
