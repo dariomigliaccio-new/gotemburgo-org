@@ -534,11 +534,133 @@
 
     .footer-links { margin-bottom: 0.8rem; }
 
+    /* ── GALERIA ── */
+    .galeria {
+      background: var(--cream);
+      padding: 5rem 1.5rem;
+    }
+
+    .galeria-header {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto 3rem;
+    }
+
+    .galeria-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .galeria-header p {
+      color: var(--gray);
+      font-style: italic;
+      font-size: 1rem;
+    }
+
+    .galeria-videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      max-width: 860px;
+      margin: 0 auto 2rem;
+    }
+
+    .galeria-videos video {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+      background: #000;
+    }
+
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .galeria-grid img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+      display: block;
+    }
+
+    .galeria-grid img:hover {
+      opacity: 0.88;
+      transform: scale(1.02);
+    }
+
+    /* Lightbox */
+    .lb-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lb-overlay.open { display: flex; }
+
+    .lb-overlay img {
+      max-width: 92vw;
+      max-height: 92vh;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .lb-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2.2rem;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+    }
+
+    .lb-close:hover { opacity: 1; }
+
+    .lb-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.12);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      padding: 0.8rem 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+      line-height: 1;
+    }
+
+    .lb-nav:hover { background: rgba(255,255,255,0.22); }
+    .lb-prev { left: 1rem; }
+    .lb-next { right: 1rem; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 680px) {
       .historia-grid { grid-template-columns: 1fr; gap: 2rem; }
       .strip-divider { display: none; }
       .fusos { gap: 0.5rem 1rem; }
+      .galeria-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 420px) {
+      .galeria-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -629,6 +751,114 @@
     </div>
   </section>
 
+  <!-- GALERIA -->
+  <section class="galeria">
+    <div class="galeria-header">
+      <span class="tag">O Momento</span>
+      <h2>Galeria — 25 de Abril de 2026</h2>
+      <p>Fotos e vídeos do culto de inauguração</p>
+      <div class="linha-ouro" style="margin: 1rem auto 0;"></div>
+    </div>
+
+    <div class="galeria-videos">
+      <video controls preload="metadata">
+        <source src="photos/WhatsApp%20Video%202026-04-25%20at%2011.37.26.mp4" type="video/mp4" />
+      </video>
+      <video controls preload="metadata">
+        <source src="photos/WhatsApp%20Video%202026-04-25%20at%2011.37.26%20%281%29.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="galeria-grid" id="galeriaGrid">
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.35.34.jpeg" loading="lazy" onclick="abrirLb(0)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.35.34%20%281%29.jpeg" loading="lazy" onclick="abrirLb(1)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.35.34%20%282%29.jpeg" loading="lazy" onclick="abrirLb(2)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.35.35.jpeg" loading="lazy" onclick="abrirLb(3)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.35.35%20%281%29.jpeg" loading="lazy" onclick="abrirLb(4)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.35.35%20%282%29.jpeg" loading="lazy" onclick="abrirLb(5)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.35.35%20%283%29.jpeg" loading="lazy" onclick="abrirLb(6)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.36.47.jpeg" loading="lazy" onclick="abrirLb(7)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.36.47%20%281%29.jpeg" loading="lazy" onclick="abrirLb(8)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.36.47%20%282%29.jpeg" loading="lazy" onclick="abrirLb(9)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.36.47%20%283%29.jpeg" loading="lazy" onclick="abrirLb(10)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.36.47%20%284%29.jpeg" loading="lazy" onclick="abrirLb(11)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.36.47%20%285%29.jpeg" loading="lazy" onclick="abrirLb(12)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.36.47%20%286%29.jpeg" loading="lazy" onclick="abrirLb(13)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.36.48.jpeg" loading="lazy" onclick="abrirLb(14)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.36.48%20%281%29.jpeg" loading="lazy" onclick="abrirLb(15)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.36.48%20%282%29.jpeg" loading="lazy" onclick="abrirLb(16)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.36.48%20%283%29.jpeg" loading="lazy" onclick="abrirLb(17)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.36.48%20%284%29.jpeg" loading="lazy" onclick="abrirLb(18)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.36.48%20%285%29.jpeg" loading="lazy" onclick="abrirLb(19)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.36.48%20%286%29.jpeg" loading="lazy" onclick="abrirLb(20)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.36.48%20%287%29.jpeg" loading="lazy" onclick="abrirLb(21)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.36.49.jpeg" loading="lazy" onclick="abrirLb(22)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.36.49%20%281%29.jpeg" loading="lazy" onclick="abrirLb(23)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.36.49%20%282%29.jpeg" loading="lazy" onclick="abrirLb(24)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.20.jpeg" loading="lazy" onclick="abrirLb(25)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.21.jpeg" loading="lazy" onclick="abrirLb(26)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.21%20%281%29.jpeg" loading="lazy" onclick="abrirLb(27)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.21%20%282%29.jpeg" loading="lazy" onclick="abrirLb(28)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.21%20%283%29.jpeg" loading="lazy" onclick="abrirLb(29)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.21%20%284%29.jpeg" loading="lazy" onclick="abrirLb(30)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.21%20%285%29.jpeg" loading="lazy" onclick="abrirLb(31)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.21%20%286%29.jpeg" loading="lazy" onclick="abrirLb(32)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.22.jpeg" loading="lazy" onclick="abrirLb(33)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.22%20%281%29.jpeg" loading="lazy" onclick="abrirLb(34)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.22%20%282%29.jpeg" loading="lazy" onclick="abrirLb(35)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.22%20%283%29.jpeg" loading="lazy" onclick="abrirLb(36)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.22%20%284%29.jpeg" loading="lazy" onclick="abrirLb(37)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.22%20%285%29.jpeg" loading="lazy" onclick="abrirLb(38)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.22%20%286%29.jpeg" loading="lazy" onclick="abrirLb(39)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.23.jpeg" loading="lazy" onclick="abrirLb(40)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.23%20%281%29.jpeg" loading="lazy" onclick="abrirLb(41)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.23%20%282%29.jpeg" loading="lazy" onclick="abrirLb(42)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.23%20%283%29.jpeg" loading="lazy" onclick="abrirLb(43)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.23%20%284%29.jpeg" loading="lazy" onclick="abrirLb(44)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.23%20%285%29.jpeg" loading="lazy" onclick="abrirLb(45)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.23%20%286%29.jpeg" loading="lazy" onclick="abrirLb(46)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.23%20%287%29.jpeg" loading="lazy" onclick="abrirLb(47)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.24.jpeg" loading="lazy" onclick="abrirLb(48)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.24%20%281%29.jpeg" loading="lazy" onclick="abrirLb(49)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.24%20%282%29.jpeg" loading="lazy" onclick="abrirLb(50)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.24%20%283%29.jpeg" loading="lazy" onclick="abrirLb(51)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.24%20%284%29.jpeg" loading="lazy" onclick="abrirLb(52)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.24%20%285%29.jpeg" loading="lazy" onclick="abrirLb(53)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.24%20%286%29.jpeg" loading="lazy" onclick="abrirLb(54)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.24%20%287%29.jpeg" loading="lazy" onclick="abrirLb(55)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.24%20%288%29.jpeg" loading="lazy" onclick="abrirLb(56)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.25.jpeg" loading="lazy" onclick="abrirLb(57)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.25%20%281%29.jpeg" loading="lazy" onclick="abrirLb(58)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.25%20%282%29.jpeg" loading="lazy" onclick="abrirLb(59)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.25%20%283%29.jpeg" loading="lazy" onclick="abrirLb(60)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.25%20%284%29.jpeg" loading="lazy" onclick="abrirLb(61)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.25%20%285%29.jpeg" loading="lazy" onclick="abrirLb(62)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.25%20%286%29.jpeg" loading="lazy" onclick="abrirLb(63)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.25%20%287%29.jpeg" loading="lazy" onclick="abrirLb(64)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.26.jpeg" loading="lazy" onclick="abrirLb(65)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.26%20%281%29.jpeg" loading="lazy" onclick="abrirLb(66)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.26%20%282%29.jpeg" loading="lazy" onclick="abrirLb(67)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.26%20%283%29.jpeg" loading="lazy" onclick="abrirLb(68)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.26%20%284%29.jpeg" loading="lazy" onclick="abrirLb(69)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.32.jpeg" loading="lazy" onclick="abrirLb(70)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.32%20%281%29.jpeg" loading="lazy" onclick="abrirLb(71)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.32%20%282%29.jpeg" loading="lazy" onclick="abrirLb(72)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.32%20%283%29.jpeg" loading="lazy" onclick="abrirLb(73)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.32%20%284%29.jpeg" loading="lazy" onclick="abrirLb(74)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.33.jpeg" loading="lazy" onclick="abrirLb(75)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.33%20%281%29.jpeg" loading="lazy" onclick="abrirLb(76)" alt="" />
+      <img src="photos/WhatsApp%20Image%202026-04-25%20at%2011.37.33%20%282%29.jpeg" loading="lazy" onclick="abrirLb(77)" alt="" />
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lb-overlay" id="lbOverlay" onclick="fecharLb(event)">
+    <button class="lb-close" onclick="fecharLb()">&times;</button>
+    <button class="lb-nav lb-prev" onclick="navLb(-1, event)">&#8249;</button>
+    <img id="lbImg" src="" alt="" />
+    <button class="lb-nav lb-next" onclick="navLb(1, event)">&#8250;</button>
+  </div>
+
   <!-- EVENTO -->
   <section class="evento">
     <div class="container">
@@ -710,6 +940,36 @@
   </footer>
 
   <script>
+    const lbImgs = Array.from(document.querySelectorAll('#galeriaGrid img')).map(i => i.src);
+    let lbIdx = 0;
+
+    function abrirLb(i) {
+      lbIdx = i;
+      document.getElementById('lbImg').src = lbImgs[i];
+      document.getElementById('lbOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function fecharLb(e) {
+      if (e && e.target !== e.currentTarget && !e.target.classList.contains('lb-close')) return;
+      document.getElementById('lbOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function navLb(dir, e) {
+      if (e) e.stopPropagation();
+      lbIdx = (lbIdx + dir + lbImgs.length) % lbImgs.length;
+      document.getElementById('lbImg').src = lbImgs[lbIdx];
+    }
+
+    document.addEventListener('keydown', e => {
+      const ov = document.getElementById('lbOverlay');
+      if (!ov.classList.contains('open')) return;
+      if (e.key === 'ArrowRight') navLb(1);
+      if (e.key === 'ArrowLeft') navLb(-1);
+      if (e.key === 'Escape') fecharLb();
+    });
+
     function copiarLink() {
       navigator.clipboard.writeText('https://gotemburgo.org').then(() => {
         const btn = document.querySelector('.btn-share.cp');
